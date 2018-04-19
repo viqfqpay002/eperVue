@@ -6,6 +6,8 @@
 }
 .goodsDetails .msgBox {
 	padding: 0.533333rem 0;
+  border-bottom: 10px solid #ddd;
+  margin: 0 -0.266667rem;
 }
 .goodsDetails .msgBox .title{
 	font-size: 0.51852rem;
@@ -17,4 +19,26 @@
 .goodsDetails .msgBox .price del{
 	font-size: 0.32rem;
 	color: #666;
+}
+.goodsDetails .sale_products{
+  padding-top:0.266667rem ;
+}
+.goodsDetails .sale_products h3.title{
+    position: relative;
+  font-size: 0.37333rem;
+  font-weight: bold;
+}
+.sale_products h3.title:after,.sale_products h3.title:before{
+  content: '';
+  position: absolute;
+  top: 52%;
+  background: #333;
+  width: 15%;
+  height: 0.064074rem;
+}
+.sale_products h3.title:after{
+  left:0;
+}
+.sale_products h3.title:before{
+  right:0
 }

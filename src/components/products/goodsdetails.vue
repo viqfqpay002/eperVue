@@ -36,7 +36,7 @@
 
           <div class="sale_products">
               <h3 class="title">推荐商品</h3>
-              <ul class="productul">
+              <ul class="productul flex rowflex">
                  <li class="item">
                   <a href="javascript:;">
                     <img src="" alt="">
@@ -99,7 +99,7 @@
            })
   },
        methods:{
-       
+
        }
 
   }
