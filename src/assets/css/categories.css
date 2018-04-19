@@ -1,0 +1,128 @@
+.scroll-box{
+	background-color: #fff; 
+	padding-top: 0.426667rem;
+	padding-bottom: 0.493333rem;
+	overflow: hidden
+}
+.scroll-box .scroll_nav .item{
+	text-align: center;
+	font-size: 0.32rem;
+}
+.scroll-box .scroll_nav .item a{
+	width: 1.866667rem;
+	display: block;
+	text-align: center
+}
+.scroll-box .scroll_nav .item .icon{
+	display:inline-block;
+	width: 0.8rem;
+	height: 0.8rem;
+}
+.select_ul{
+	flex-flow: row wrap;
+	padding: 0.133333rem;
+}
+.select_ul .item{
+	display: block;
+	margin:0.066667rem;
+	width: 3.066667rem;
+	height: 0.96rem;
+	line-height: 0.96rem;
+	text-align: center;
+	font-size: 0.32rem;
+    background-color: #fff; 
+    position: relative;
+   }
+.select_ul .active .icon{
+display: block;
+z-index: 10;
+width:0;  
+height:0;  
+border-top:5px solid #f99526;  
+border-bottom:5px solid transparent;  
+border-right:5px solid transparent ;
+border-left:5px solid transparent ;
+position: absolute;
+top: 100%;
+left: 50% ;
+margin-left: -0.2rem;
+display: none;
+}
+
+.select_ul .active{
+	background-color: #f99526;
+	box-shadow: 0px 4px 4px 0px 
+		rgba(249, 149, 38, 0.4);
+	color: #fff;
+}
+.select_ul .active .icon{
+	display: block
+}
+  
+.cate_list_show{
+	background:#fff; 
+}
+.cate_list_show .title{
+	border-top: 3px solid #f58220;
+	font-size: 0.32rem;
+	height: 0.96rem;
+	line-height: 0.96rem;
+	position: relative;
+          
+}
+.cate_list_show .title p{
+	width: 3.066667rem;
+	text-align: center;
+	border-bottom: 2px solid #ddd;
+	position: relative
+}
+.cate_list_show .title p .icon{
+display: block;
+z-index: 10;
+width:0;  
+height:0;  
+border-top:5px solid #f99526;  
+border-bottom:5px solid transparent;  
+border-right:5px solid transparent ;
+border-left:5px solid transparent ;
+position: absolute;
+top: 0;
+left: 50% ;
+margin-left: -0.2rem;
+}
+.cate_list_show .title p em{
+display: block;
+z-index: 10;
+width:0;  
+height:0;  
+border-top:5px solid #f7f8f8;  
+border-bottom:5px solid transparent;  
+border-right:5px solid transparent ;
+border-left:5px solid transparent ;
+position: absolute;
+top: -0.053333rem;
+left: 50.2% ;
+margin-left: -0.2rem;
+}
+.cate_show_ul{
+	padding-bottom: 1.066667rem;
+	flex-flow: row wrap;
+}
+.cate_show_ul .item{
+	margin-top: 0.533333rem
+}
+.cate_show_ul .item a{
+	display: block;
+	width: 2.3rem;
+	text-align: center;
+	font-size: 0.32rem
+}
+.bottomImg{
+	height: 2.666667rem;
+	background:#fff; 
+	padding-bottom: 1.6rem;
+	display:block;
+	margin-top: 0.266667rem;
+	text-align: center;
+
+}

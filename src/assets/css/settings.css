@@ -1,0 +1,22 @@
+.link-change{
+	padding-left: 0.533333rem;
+	padding-right: 0.4rem;
+	height: 1.066667rem;
+	background: #fff;
+	font-size: 0.32rem
+}
+.link-change .icon{
+	font-size: 0.533333rem;
+	color: #666
+}
+.logout_btn{
+	display: block;
+	width: 100%;
+	margin-top: 0.533333rem;
+	background: #333;
+	height: 1.066667rem;
+	line-height: 1.066667rem;
+	color: #fff;
+	font-size: 0.373333rem;
+	text-align: center
+}

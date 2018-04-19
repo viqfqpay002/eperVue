@@ -1,0 +1,127 @@
+/* login */
+
+.login_center{
+	background: #fff;
+	padding-top: 1.8rem;
+}
+.form_box input,.form_box button{
+   width: 8.693333rem;
+   height: 1.066667rem;
+   line-height: 1.066667rem;
+   border: 1px solid #ddd;
+   padding-left: 0.266667rem;
+   font-size: 0.373333rem;
+
+}
+.form_box .input_group{
+   margin-bottom: 0.266667rem
+}
+.form_box .submit{
+	width: 100%;
+	background: #333;
+	color: #fff
+}
+ .user_forget{
+	margin-top: 0.533333rem;
+	text-align: center;
+    color: #f58220;
+    display: block;
+    position: relative
+}
+  .user_forget:before, .user_forget:after {
+            content: '';
+            position: absolute;
+            top: 52%;
+            background: #ddd;
+            width: 20%;
+            height: 3px;
+        }
+         .user_forget:before{
+            left: 0.4rem;
+        }
+          .user_forget:after {
+            right: 0.4rem;
+        }
+
+    .user_img{
+    	display: block;
+    	width: 100%;
+    	margin-top: 0.533333rem;
+    	text-align: center;
+    	height: 9.0rem;
+    	background: #fff
+    }
+    .user_footer{
+    	display: flex;
+    	align-items: center;
+    	padding:0.266667rem 0;
+      position: fixed;
+      bottom:1.306667rem;
+    }
+    .user_footer .go_register{
+    	height: 1.066667rem;
+         display: block;
+         width: 100%;
+    	border: 2px solid #f58220;
+    	text-align: center;
+    	font-size: 0.48rem;
+    	line-height: 1.066667rem;
+    	margin: 0 0.533333rem;
+    	border-radius: 0.133333rem;
+    	color: #f58220;
+
+    }
+/* register */
+.vertification_box{
+    position: relative
+}
+.vertification_box .ver_btn{
+    width: 3.2rem;
+    position: absolute;
+    right: -0.013333rem;
+    top: 0;
+    border-right:none ;
+    background: #f58220;
+    color: #fff;
+}
+input[type="checkbox"]{
+    width:0.373333rem;
+    height: 0.373333rem;
+    vertical-align: middle
+}
+.checked_box .checkd_info{
+    color: #f58221
+}
+ .checked_box .tel_msg{
+    text-indent: 0.373333rem
+}
+.submit_box{
+  margin-top: 1.6rem;
+  text-align: center
+}
+
+button.reg_btn{
+    background-color:#f58221 !important;
+}
+
+/* forgot password */
+.form_box label{
+   font-size: 0.373333rem;
+   font-weight: bold;
+   padding-left: 0.266667rem;
+   line-height: 0.8rem
+}
+.forgot_box .vertification_box .ver_btn{
+    top: 0.8rem;
+}
+.disabled{
+  background: #ddd  !important;
+}
+.errinfo{
+  height: 0.533333rem;
+  display: block !important;
+  width: 100%;
+  line-height:0.533333rem;
+  color: red;
+  font-size: 0.32rem
+}

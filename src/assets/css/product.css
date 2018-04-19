@@ -1,0 +1,49 @@
+.product{
+	width: 100%;
+	background: #fff;
+	padding-bottom:1.333333rem; 
+}
+.product .product_ul{
+	width: 100%;
+	flex-flow: row wrap;
+	/* justify-content: space-between; */
+	padding: 0.133333rem;
+}
+.product .product_ul .item{
+	width: 50%;
+	font-size:0.373333rem;
+	padding-bottom: 0.533333rem;
+	position: relative
+}
+.product .product_ul .item>a{
+	display: block;
+	padding: 0 0.133333rem;
+}
+.product .product_ul .i_price{
+	color: #f58220;
+
+}
+.product .product_ul .i_country{
+	font-size:0.32rem;
+	line-height: 0.533333rem
+}
+.product .product_ul .item .img_box{
+/* 	background: #ddd; */
+	text-align: center
+}
+.product .product_ul .item .info_box{
+	padding:0 0.266667rem;
+
+}
+.product_ul .item .iconfont{
+   color: #f58220;
+   font-size: 0.8rem;
+   position: absolute;
+   right: 0.4rem;
+   bottom:0.4rem;
+}
+/* 商品无库存图标灰色 */
+
+.product_ul .item .no_icon{
+   color: #666 !important;
+}

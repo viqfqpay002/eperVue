@@ -1,0 +1,169 @@
+.banner{
+  width: 100%;
+  height: 4.426667rem;
+  background: #333;
+  text-align: center;
+  overflow: hidden
+}
+.user_login_box{
+  height: 1.6rem;
+  margin-bottom: 0.36rem;
+  background: #fff;
+  padding: 0.533333rem 0;
+
+}
+.user_login_box .title{
+  text-align: center;
+  height: 0.533333rem;
+  line-height: 0.533333rem;
+  position: relative;
+  font-size:0.32rem;
+  font-weight: 500
+}
+.user_login_box .title:before, .user_login_box .title:after {
+  content: '';
+  position: absolute;
+  top: 52%;
+  background: #ddd;
+  width: 25%;
+  height: 3px;
+}
+.user_login_box .title:before{
+  left: 0.4rem;
+}
+.user_login_box .title:after {
+  right: 0.4rem;
+}
+
+.user_login_box .user_btns .user_btn{
+  font-size: 0.32rem;
+  line-height:0.666667rem;
+  border: 1px solid #333;
+  margin:0.266667rem;
+  width: 50%;
+  text-align: center;
+}
+.user_login_box .user_btns .active{
+  border-color: #f58220;
+  color: #f58220
+}
+.classify{
+  height: 1.6rem;
+  margin-bottom: 0.36rem;
+  background: #fff;
+  padding: 0.533333rem 0;
+}
+.classify_ul {
+  width: 100%;
+  padding: 0 0.266667rem;
+}
+.classify_ul li{
+  text-align: center;
+  font-size: 0.32rem;
+}
+.classify_ul .iconfont{
+  font-size:0.8rem;
+  display: block;
+  height: 1.066667rem
+}
+.classify_ul .info{
+  color: #888;
+}
+.classify_ul .item:nth-of-type(2){
+  width: 42%;
+  margin-top: 0.266667rem
+}
+.entry{
+  background: #fff;
+  padding: 0.453333rem 0;
+
+}
+.entry_ul .item{
+  width: 40%;
+  text-align: center;
+  font-family: FZhengLT-gbk;
+  font-size: 0.373333rem
+}
+.entry_ul .item:nth-of-type(1) a{
+  color: #f58220
+}
+.entry_ul .item:nth-of-type(3) a{
+  color: #64a115;
+}
+.entry_ul .item:nth-of-type(2) a{
+  color: #f00d0d
+}
+.entry_ul .item:nth-of-type(2){
+  border-left: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+  padding: 0 0.066667rem;
+}
+.entry_ul .img_box{
+  margin: 0 auto;
+  width: 2.946667rem;
+  height: 3.08rem;
+}
+.entry_ul .img_box img{
+  width: 100%
+}
+
+
+.middleBanner{
+  text-align: center;
+  height: 2.906667rem;
+  overflow: hidden;
+  background: #fff;
+  margin-top: 0.453333rem;
+  padding: 0.266667rem 0;
+}
+.middleBanner .middleBanner_ul{
+  width: 100%;
+  height: 2.906667rem;
+  overflow: hidden;
+
+}
+.middleBanner .item{
+  width: 100%;
+  height: 2.906667rem;
+  overflow: hidden
+}
+
+
+.more{
+  margin: 0 0.4rem;
+  height: 0.96rem;
+  font-size: 0.32rem;
+  color: #f58220;
+  text-align: center;
+  display: block;
+  line-height: 0.96rem;
+  border: 1px solid #f58220
+}
+.f_brands{
+  margin-top: 0.266667rem;
+  width: 100%;
+  background: #fff;
+  padding-bottom:0.8rem
+
+}
+.f_brands .title{
+  height: 1.066667rem;
+  text-align: center;
+  line-height: 1.066667rem;
+  font-size: 0.4rem;
+  border-bottom: 1px solid #ddd;
+
+}
+.f_brands .f_brands_ul{
+  flex-flow: row wrap
+}
+.f_brands .f_brands_ul .item{
+  width: 1.92rem;
+  height: 1.92rem;
+  text-align: center;
+  margin:0.266667rem 0.266667rem;
+}
+.f_brands_ul .item img{
+  width: 100%
+}
+

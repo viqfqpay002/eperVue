@@ -1,0 +1,137 @@
+.cart_box{
+	background: #fff;
+}
+.login_cart{
+   padding-top: 1.04rem;
+   padding-bottom: 0.8rem;
+   text-align: center;
+
+}
+
+.login_cart .btn{
+	display: inline-block;
+	text-align: center;
+	width: 5.6rem;
+	height: 0.96rem;
+	line-height: 0.96rem;
+	margin: 0 auto;
+	border: 1px solid #f18d00;
+	color: #f18d00;
+	font-size: 0.373333rem;
+	margin-top: 0.32rem
+}
+.login_cart .icon{
+	font-size: 1.6rem;
+	display: block;
+	height: 2.0rem;
+	color: #f58220
+}
+/*.login_cart .go_shop{*/
+	/*display: none*/
+/*}*/
+.cart_sale_box .title{
+	text-align: center;
+	height: 1.066667rem;
+	line-height: 1.066667rem;
+	font-size: 0.4rem;
+	background: #e6e6e6;
+	margin: 0 -0.4rem;
+
+}
+.cartListBox .sale_activity{
+   font-size: 0.32rem;
+   height: 1.066667rem;
+   line-height: 1.066667rem;
+   border-bottom: 1px solid #ddd;
+   padding: 0 0.4rem;
+}
+.cartListBox .sale_activity .go_shopping{
+   padding-left: 0.266667rem;
+   color: #f18d00
+}
+.cartList_ul .item{
+	padding: 0.266667rem 0;
+	border-bottom: 1px solid #ddd;
+	font-size: 0.32rem;
+	line-height: 0.32rem;
+	position: relative;
+}
+.cartList_ul .item .del_icon{
+	font-size: 0.64rem;
+   position: absolute;
+   right: 0.533333rem;
+   bottom: 0.8rem
+}
+ .cartList_ul .item .item_check{
+ 	width: 0.533333rem;
+ 	height: 0.346667rem;
+ 	background: none;
+ 	margin-right: 0.266667rem;
+ 	margin-top: 1.066667rem
+ }
+ .cartList_ul .item .item_info .img_box{
+   width: 2.666667rem;
+   height: 2.666667rem;
+   text-align: center;
+   margin-right: 0.266667rem
+ }
+.cartList_ul .item .i_price{
+ 	font-size: 0.4rem;
+ 	color:  #f18d00;
+ 	line-height:0.666667rem
+ }
+ .cartList_ul .item .errinfo{
+ 	color:#f00000;
+ 	visibility: hidden;
+ 	font-size: 0.266667rem;
+ }
+ .cartList_ul .item .counter{
+ 	width:2.933333rem;
+ 	height: 0.64rem;
+ 	line-height: 0.64rem;
+ 	text-align: center;
+ 	border: 1px solid #333;
+ 	font-size: 0.4rem
+ }
+ .cartList_ul .counter .sub,.cartList_ul .counter .push{
+ 	width: 0.64rem;
+ 	height:0.626667rem;
+ 	line-height: 0.64rem;
+ 	background: #f7f8f8;
+ }
+ .cartList_ul .NumInput{
+ 	width:1.653333rem;
+ 	text-align: center;
+ 	vertical-align: middle;
+ 	font-size: 0.4rem
+ }
+ .checkOut{
+ 	width: 100%;
+ 	height: 1.253333rem;
+ 	line-height: 1.253333rem;
+ 	border-top: 1px solid #ddd;
+ 	box-shadow: 1px 1px 0.133333rem #ddd;
+ 	position: fixed;
+ 	z-index: 20;
+ 	bottom: 1.306667rem;
+ 	background: #fff;
+ 	font-size: 0.4rem
+ }
+ .check_group input[type="checkbox"]{
+ 	width: 0.4rem;
+ 	height: 0.4rem;
+ 	vertical-align: middle
+ }
+ .checkOut .total .total_p{
+     color: #f30000;
+     padding-right: 0.533333rem
+ }
+ .checkOut .total_btn{
+ 	display: inline-block;
+ 	width:2.933333rem;
+ 	height: 0.8rem;
+ 	line-height: 0.8rem;
+ 	background: #f9911e;
+ 	color: #fff;
+ 	text-align: center;
+ }

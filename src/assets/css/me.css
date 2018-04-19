@@ -1,0 +1,96 @@
+.userCenter-wrap{
+	background-color:#fff;
+}
+.usercenter_banner{
+	padding-top: 0.266667rem;
+	height: 4.453333rem;
+    background-image: url('../../assets/img/mebg.png');
+	background-repeat: no-repeat;
+	background-size: 100%;
+	color: #fff;
+	text-align: center;
+}
+.usercenter_msg{
+	font-size: 0.48rem;
+}
+
+.usercenter_msg .linkLogin a{
+	color: #f18d00;
+	display: inline-block;
+	padding: 0 0.266667rem;
+	font-size: 0.373333rem;
+	line-height: 0.373333rem
+}
+.usercenter_msg .linkLogin a+a{
+	border-left:1px solid #f18d00
+}
+
+.usercenter_msg .userlevel{
+	font-size: 0.373333rem
+}
+.user_msg_list{
+	margin-top: 0.546667rem;
+	font-size:0.32rem;
+}
+.user_msg_list .info_count{
+	color: #f58220;
+	font-size: 0.4rem;
+	font-family:  FZhengLT-gbk
+}
+.com_tips{
+	border:1px solid #fff;
+	font-size: 0.32rem;
+	height: 0.773333rem;
+	line-height: 0.773333rem;
+	padding: 0 0.266667rem;
+	margin-top:0.16rem;
+}
+.com_tips .iconfont{
+	display: inline-block;
+	margin-right: 0.133333rem;
+	font-size:0.533333rem;
+}
+.usercenter_nav{
+	width: 100%;
+	padding : 0.266667rem 0 0.8rem 0;
+	background-image: url('../../assets/img/menubg.png');
+	background-repeat: no-repeat;
+	background-size: 100%;
+	text-align: center;
+
+}
+.usercenter_nav_ul{
+	width: 100%;
+	flex-flow: row wrap;
+	border: none
+}
+.usercenter_nav_ul .item{
+	width: 3.306667rem;
+	height: 3.333333rem;
+	font-size:0.32rem;
+	border-right:1px solid #666;
+	border-top: 1px solid #666;
+	text-align: center;
+}
+.usercenter_nav_ul .item:nth-child(3n){
+	border-right: none
+}
+.usercenter_nav_ul .item:first-child{
+	border-top: none
+}
+.usercenter_nav_ul .item:nth-of-type(2){
+	border-top: none
+}
+.usercenter_nav_ul .item:nth-of-type(3){
+	border-top: none
+}
+.usercenter_nav_ul .item .icon{
+	font-size: 1.066667rem;
+	line-height: 2.133333rem;
+	color: #f58220;
+
+}
+.userCenterNoLogin{
+	padding-bottom: 1.333333rem;
+}
+

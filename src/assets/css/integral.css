@@ -1,0 +1,39 @@
+  .isActive{
+      border-bottom-color:#f58220 !important; 
+   }
+   .integralList{
+      text-align: center;
+      background: #fff;
+   }
+   .integralList .inteMsg{
+      padding:0 0.266667rem;
+      font-size: 0.32rem;
+      padding-bottom: 0.533333rem;
+   }
+   .integralList .inteMsg p{
+       text-align: left;
+   }
+   .integralList .inteMsg p:last-child{
+       text-align: center;
+   }
+   .integralList .inteMsg .laver{
+    color: #f58220;
+   }
+   .nodata{
+    font-size: 0.32rem;
+    padding-bottom: 1.066667rem
+   }
+  .nodata img{
+    width: 2.759259rem;
+    height: 2.685185rem;
+  }
+ .integralList .title_tab{
+    border-top: 0.266667rem solid #f2f2f2;
+    line-height: 0.8rem;
+    height: 0.8rem;
+ }
+ .integralList .title_tab a{
+     width: 50%;
+     border-bottom: 0.053333rem solid #fff;
+ }
+
