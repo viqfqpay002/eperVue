@@ -167,8 +167,12 @@ export default {
     }
 
   },
-  created(){
-    let uid = localStorage.getItem('user');
+  beforeMount() {
+     this.getData()
+  },
+  methods: {
+     getData: function(){
+           let uid = localStorage.getItem('user');
     if(uid!=null){
       this.flag= !this.flag;
     }
@@ -188,14 +192,7 @@ export default {
               });
         };
      });
- 
-},
-  beforeMount() {
- 
-  },
-  mounted () {
-
-  
+     }
   }
 }
 </script>

@@ -5,6 +5,7 @@
 	overflow: hidden
 }
 .scroll-box .scroll_nav .item{
+	width: 2.666667rem;
 	text-align: center;
 	font-size: 0.32rem;
 }

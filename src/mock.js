@@ -246,3 +246,223 @@ mock.mock('/api/indexList',(req,res)=>{
   }
      
 })
+//详情页的显示信息
+mock.mock('/api/detail/:id=null',(req,res)=>{
+  return {
+     data:[{
+          pId:1000,
+          pTitle:"Organic Italian Lettuce",
+          pIcon:1,
+          pOrigin:"China",
+          price:19.00,
+          pImg:[
+            "/static/img/product.4eba28a.png",
+            "/static/img/product.4eba28a.png",
+            "/static/img/product.4eba28a.png",   
+          ],
+          inventory :1000,
+          specification:"300g±5%",
+          shelf:"3"
+         },{
+          pId:1001,
+          pTitle:"Organic Italian Lettuce ",
+          pIcon:3,
+          pOrigin:"America",
+          price:20.00,
+          pImg:[
+             "/static/img/product.4eba28a.png",
+             "/static/img/product.4eba28a.png",
+          ],
+          inventory :10,
+          specification:"320g ±5%",
+          shelf:"5"
+         },{
+          pId:1002,
+          pTitle:"Organic Italian Lettuce ",
+          pIcon:6,
+          pOrigin:"France",
+          price:25.00,
+          pImg:["/static/img/product.4eba28a.png"],
+          inventory :0,
+          specification:"330g ±5%",
+          shelf:"3"
+         },{
+          pId:1003,
+          pTitle:"Organic Italian Lettuce",
+          pIcon:9,
+          pOrigin:"China",
+          price:30.30,
+          pImg:["/static/img/product.4eba28a.png"],
+          inventory :1,
+          specification:"340g ±5%",
+          shelf:"7"
+         },{
+          pId:1004,
+          pTitle:"Organic Italian Lettuce",
+          pIcon:2,
+          pOrigin:"France",
+          price:100.00,
+          pImg:["/static/img/product.4eba28a.png"],
+          inventory :500,
+          specification:"330g ±5%",
+          shelf:"180"
+         },{
+          pId:1006,
+          pTitle:"Organic Italian Lettuce ",
+          pIcon:3,
+          pOrigin:"China",
+          price:20.00,
+          pImg:["/static/img/product.4eba28a.png"],
+          inventory :1120,
+          specification:"340g ±5%",
+          shelf:"180"
+         }] 
+  }
+    
+})
+
+//Categories页面
+mock.mock('/api/categories',(req,res)=>{
+  return{  
+   navList:[
+      {
+        classilyId:1,
+        navMsg:"Organic",
+        navIcon:"/static/img/catetips.png",
+      },{
+        classilyId:2,
+         navMsg:"Vegetarian",
+        navIcon:"/static/img/catetips.png",
+      },
+      {
+        classilyId:3,
+         navMsg:"Sugar Free",
+        navIcon:"/static/img/catetips.png",
+      },{
+        classilyId:4,
+         navMsg:"Diet",
+        navIcon:"/static/img/catetips.png",
+      },
+      {
+        classilyId:5,
+        navMsg:"Gluten Free",
+        navIcon:"/static/img/catetips.png",
+      },{
+        classilyId:6,
+         navMsg:"Hala",
+        navIcon:"/static/img/catetips.png",
+      },
+      {
+        classilyId:7,
+         navMsg:"Gluten Free",
+        navIcon:"/static/img/catetips.png",
+      },{
+        classilyId:8,
+         navMsg:"Hala",
+        navIcon:"/static/img/catetips.png",
+      }
+   ],
+   menuList:[
+       {
+        txt:"The Market",
+        classilyList:[{
+          classilyId:101,
+          title:"Butcher Shop",
+          classilyImg:"/static/img/cateimg.31360a2.png"
+        },{
+           classilyId:102,
+           title:"Fruits",
+           classilyImg:"/static/img/cateimg.31360a2.png"
+        },{
+          classilyId:103,
+          title:"Fruits",
+          classilyImg:"/static/img/cateimg.31360a2.png"
+        },{
+          classilyId:104,
+          title:"Fruits",
+          classilyImg:"/static/img/cateimg.31360a2.png"
+        },{
+          classilyId:105,
+          title:"Fruits",
+          classilyImg:"/static/img/cateimg.31360a2.png"
+        },{
+           classilyId:106,
+           title:"Deli",
+           classilyImg:"/static/img/cateimg.31360a2.png"
+        },{
+         
+           classilyId:107,
+           title:"Easy Cooking",
+           classilyImg:"/static/img/cateimg.31360a2.png"
+        
+        }]
+      },
+        {
+          txt:"Dairy",
+          classilyList:[{
+          classilyId:201,
+          title:"Butcher Shop",
+          classilyImg:"/static/img/cateimg.31360a2.png"
+        }]
+        },{
+           txt:"Bakery",
+          classilyList:[{
+          classilyId:301,
+          title:"Butcher Shop",
+          classilyImg:"/static/img/cateimg.31360a2.png"
+        }]
+        },{
+          txt:"Snacks&Sweets",
+          classilyList:[{
+          classilyId:401,
+          title:"Butcher Shop",
+          classilyImg:"/static/img/cateimg.31360a2.png"
+        }]
+        },{
+          txt:"Frozen Food",
+          classilyList:[{
+          classilyId:501,
+          title:"Butcher Shop",
+          classilyImg:"/static/img/cateimg.31360a2.png"
+        }]
+        },{
+          txt:"Beverages",
+          classilyList:[{
+          classilyId:601,
+          title:"Butcher Shop",
+          classilyImg:"/static/img/cateimg.31360a2.png"
+        }]
+      },{
+          txt:"Baby&Body care",
+          classilyList:[{
+          classilyId:701,
+          title:"Butcher Shop",
+          classilyImg:"/static/img/cateimg.31360a2.png"
+        }] 
+      },{
+          txt:"Pet / House",
+          classilyList:[{
+          classilyId:801,
+          title:"Butcher Shop",
+          classilyImg:"/static/img/cateimg.31360a2.png"
+        }] 
+      },{
+          txt:"Dairy",
+          classilyList:[{
+          classilyId:901,
+          title:"Butcher Shop",
+          classilyImg:"/static/img/cateimg.31360a2.png"
+        }] 
+      }
+
+         
+        
+        
+
+         
+
+   ]
+  }
+
+
+})

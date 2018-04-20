@@ -6,80 +6,55 @@
        </h3>
      </header>
        <article class="goodsDetails">
-          <div class="imgShow">
-             <ul class="imgShowUl">
-                <li class="item">
-                  <a href="javascript:;">
-                     <img src=""/>
-                  </a>
-              </li>
-                 <li class="item">
-                  <a href="javascript:;">
-                     <img src=""/>
-                  </a>
-              </li>
-                 <li class="item">
-                  <a href="javascript:;">
-                     <img src=""/>
+          <div class="imgShow swiper-container" id="detailImg">
+             <ul class="imgShowUl swiper-wrapper">
+                <li class="item swiper-slide">
+                  <a href="javascript:;" >
+                     <img :src="pImg" />
                   </a>
               </li>
              </ul>
-              <div class="tabIcon"></div>
+              <div class="index-p"></div>
           </div>
           <div class="msgBox">
-             <h4 class="title">Eper精选 特级水蜜桃白草莓15pcs 300g~350g</h4>
-             <p class="price">￥280.00 <del>￥600.00</del></p>
-             <p class="source">原产地:<span>China</span></p>
-             <p class="size">包装规格:<span>300g~500g</span></p>
-             <p class="shelfLife">保质期:<span>3</span>天</p>
+             <h4 class="title">{{ptitle+specification}}</h4>
+             <p class="price">￥{{pPrice|keepTwoNum}} <del>￥600.00</del></p>
+             <p class="source">原产地:<span>{{pSource}}</span></p>
+             <p class="size">包装规格:<span>{{specification}}</span></p>
+             <p class="shelfLife">保质期:<span>{{shelf}}</span>天</p>
           </div>
-
-          <div class="sale_products">
+  
+          <div class="center">
+          <div class="sale_products swiper-container" id="saleScorll">
               <h3 class="title">推荐商品</h3>
-              <ul class="productul flex rowflex">
-                 <li class="item">
-                  <a href="javascript:;">
-                    <img src="" alt="">
-                  </a>
+              <ul class="productul flex rowflex swiper-wrapper">
+                 <li class="item swiper-slide" v-for="item in product">
+                  <router-link :to="{name:'detail',params:{id:item.pId}}" >
+                    <img :src="item.pImg" :alt="item.pId">
+                  </router-link>
                   <div class="infobox">
-                     <h6 class="title"> 美国青苹果 4pcs 550g-580g</h6>
-                     <p class="source">原产地:<span>美国</span></p>
-                     <p class="price">￥280.00</p>
+                     <h6 class="title">{{item.pTitle}}{{item.specification}}</h6>
+                     <p class="source">原产地:<span>{{item.pOrigin}}</span></p>
+                     <p class="price">￥{{item.price|keepTwoNum}}</p>
                      <span class="icon icon_add_cart iconfont icon-gouwuchetianjia"></span>
                   </div>
                 </li>
-                 <li class="item">
-                  <a href="javascript:;">
-                    <img src="" alt="">
-                  </a>
-                  <div class="infobox">
-                     <h6 class="title"> 美国青苹果 4pcs 550g-580g</h6>
-                     <p class="source">原产地:<span>美国</span></p>
-                     <p class="price">￥280.00</p>
-                     <span class="icon icon_add_cart iconfont icon-gouwuchetianjia"></span>
-                  </div>
-                </li>
-                 <li class="item">
-                  <a href="javascript:;">
-                    <img src="" alt="">
-                  </a>
-                  <div class="infobox">
-                     <h6 class="title"> 美国青苹果 4pcs 550g-580g</h6>
-                     <p class="source">原产地:<span>美国</span></p>
-                     <p class="price">￥280.00</p>
-                     <span class="icon icon_add_cart iconfont icon-gouwuchetianjia"></span>
-                  </div>
-                </li>
-
               </ul>
           </div>
+        </div>
           <div class="goods_info">
               <h3 class="title">商品描述</h3>
                <div class="imgs">
-                  XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+                  这是一个好商品，好看，好吃......
+                  XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+                  XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+                  XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+                  XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
                </div>
           </div>
+
        </article>
+    
    </div>
 </template>
 <script>
@@ -87,23 +62,63 @@
        name:"goodsDetails",
         data(){
             return{
-               product:[]
+               product:[],
+               pImg:[],
+               ptitle:"",
+               pSource:"",
+               pPrice:"",
+               specification:"",
+               pOrigin:"",
+               pIcon:"" , //用来显示icon标记的
+               shelf:"",
             }
         },
-     beforeMount(){
-           this.$axios.get('/api/indexList').then(res=>{
-              if(res.status==200&&res.data.data.length>0){
-                 this.product = res.data.data;
-
-              }
-           })
+  created(){
+     this.startData()
   },
-       methods:{
+  methods: {
+     startData: function(){
+             const routeId = this.$route.params.id
+             this.$axios.get('/api/indexList'/*,{params:{id:routeId}}*/).then(res=>{
+              if(res.status==200&&res.data.data.length>0){
+                 this.product = res.data.data
+                  for(let list of res.data.data){
+                     if(routeId==list.pId){
+                           this.show==this.show;
+                           this.pImg=list.pImg,
+                           this.ptitle=list.pTitle,
+                           this.pSource=list.pOrigin,
+                           this.pPrice=list.price,
+                           this.specification=list.specification,
+                           this.pIcon=list.pIcon;
+                           this.shelf = list.shelf;
+                     }
+                  }
+                    this.$nextTick(function(){
+                     new Swiper('#detailImg', {
+                     autoplay: 3000,
+                     pagination : '#detailImg .index-p',
+                  });
+                     new Swiper('#saleScorll', {
+                      loop:true,
+                      slidesPerView: 'auto',
+                      loopedSlides: 7,
+                  });
 
-       }
-
+              });
+              }
+           })   
+     }
+  },
+   watch:{
+    '$route'(){
+          this.startData()
+         }
+          }
+                
+          
   }
 </script>
 <style scoped="scoped">
    @import "../../assets/css/goodsDetails.css";
-</style>
+   </style>

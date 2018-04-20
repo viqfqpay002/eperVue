@@ -53,18 +53,24 @@ export default {
           loading:"loading....",
           flag:true,
           footerShow:true,
-          routeName:"",
+          routeName:this.$route.name
       }
   },
-  beforeCreate(){
 
-         
-  },
   beforeMount(){ 
-   this.routeName = this.$route.name;
-     if(this.routeName=="login"||this.routeName=="register"){
-          this.footerShow=false;
-     } 
+   
+  },
+  mounted(){
+     this.flag = !this.flag;
+     this.startGetData(this.routeName)
+  },
+  methods: {
+     startGetData: function(name){
+     if(name=="login"||name=="register"){
+          this.footerShow= !this.footerShow;
+     }else{
+          this.footerShow = true
+        } 
          let user = localStorage.getItem('user');
          let Base64 = require('js-base64').Base64;
          if(user!=null){
@@ -78,37 +84,16 @@ export default {
                }
              }
            })
+         }else{
+           this.cartNum=0
          }
-    
-  },
-  mounted(){
-     this.flag = !this.flag;
-      
+     }
   },
   watch:{
     '$route'(){
-      this.routeName = this.$route.name;
-     if(this.routeName=="login"||this.routeName=="register"){
-          this.footerShow=false;
-     } else{
-      this.footerShow = true;
-     }
-      let user = localStorage.getItem('user');
-      let Base64 = require('js-base64').Base64;
-      if(user!=null){
-        this.$axios.post('/api/user').then(res=>{
-          if(res.status===200 && res.data!=''){
-            let userList = res.data.data;
-            for(let i=0;i<userList.length;i++){
-              if(userList[i].mobile == Base64.decode(user)){
-                this.cartNum = userList[i].cartNum;
-              }
-            }
-          }
-        })
-      }else {
-          this.cartNum=0
-      }
+       let routeName = this.$route.name;
+       this.routeName = routeName;
+        this.startGetData(routeName)
     }
   }
 }
