@@ -1,7 +1,7 @@
 <template>
    <div id="register">
      <header class="header flex midcenter login_header">
-       <h3 class="title flex rowflexbteew p30"><a href="javascript:;" class="icon js_go_history"> < </a> <p>Register</p><span></span></h3>
+       <h3 class="title flex rowflexbteew p30"><a href="javascript:;" class="icon js_go_history" @click="activated"> < </a> <p>Register</p><span></span></h3>
      </header>
      <article class="p40 login_center">
        <section class="form_box">
@@ -68,6 +68,9 @@
          }
      },
       methods: {
+          activated: function () {
+     this.$setgoindex()
+   },
         sendClik: function(){
           if(this.phone!==""){
              this.errorflag=true;

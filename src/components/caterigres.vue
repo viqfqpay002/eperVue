@@ -32,112 +32,46 @@
       </ul>
     </header>
     <article>
-      <section class="scroll-box " id="cag_list">
-        <div class="swiper-container">
+      <section class="scroll-box ">
+        <div class="swiper-container"  id="cag_list">
           <ul class="scroll_nav flex rowflexbteew swiper-wrapper ">
             <li class="item  swiper-slide " v-for="item in navList">
-              <a href="javascript:;">
+              <router-link :to="{name:'classily',query:{id:item.classilyId}}">
                <span class="icon">
                 <img :src="item.navIcon" alt="tip" title="tips"/>
               </span>
               <p class="info">{{item.navMsg}}</p>
-            </a>
+            </router-link>
           </li>
-       
-    </ul>
- <!--    <ul class="scroll_nav flex swiper-slide p30 rowflexbteew ">
-      <li class="item"><a href="javascript:;">
-       <span class="icon">
-        <img src="../assets/img/catetips.png" alt="tip" title="tips"/>
-      </span>
-      <p class="info">Gluten Free</p>
+        </ul>
+      </div>
+    </section>
+    <section class="select_cate">
+      <div class="select_ul flex">
+        <a href="javascript:;" :class="['item',{'active':index==flag?true:false}]" v-for="(item,index) in menuList" @click="tabChecked(index)"><span class="icon"></span>{{item.txt}}</a>
+      </div>
+    </section>
+    <section class="cate_list_show p30">
+      <h3 class="title flex rowflexbteew">
+    
+        <p><span id="showTab">{{txt}}</span> <span class="icon"></span> <em></em></p>
+      
+        <a href="javascript:;">All <span class="icon iconfont icon-jiantouxi"></span></a>
+      </h3>
+      <ul class="cate_show_ul flex" > 
+        <li class="item" v-for="(item,index) in classifyList">
+          <router-link :to="{name:'classily',query:{id:item.classilyId}}">
+            <img :src="item.classilyImg" alt="item.classilyId" title='item.title'/>
+            <p class="info">{{item.title}}</p>
+          </router-link>
+        </li>
+      </ul>
+   </transition>
+    </section>
+    <a class="bottomImg p30">
+      <img src="../assets/img/cateBottomimg.png" alt="bottomimg" title="bottom"/>
     </a>
-  </li>
-  <li class="item"><a href="javascript:;">
-   <span class="icon">
-    <img src="../assets/img/catetips.png" alt="tip" title="tips"/>
-  </span>
-  <p class="info">Hala</p>
-</a>
-</li>
-<li class="item"><a href="javascript:;">
- <span class="icon">
-  <img src="../assets/img/catetips.png" alt="tip" title="tips"/>
-</span>
-<p class="info">Gluten Free</p>
-</a>
-</li>
-<li class="item"><a href="javascript:;">
- <span class="icon">
-  <img src="../assets/img/catetips.png" alt="tip" title="tips"/>
-</span>
-<p class="info">Hala</p>
-</a>
-</li>
-</ul> -->
-</div>
-</section>
-<section class="select_cate">
-  <div class="select_ul flex">
-    <a href="javascript:;" class="item active"><span class="icon"></span>The Market</a>
-    <a href="javascript:;" class="item "><span class="icon"></span>Dairy</a>
-    <a href="javascript:;" class="item"><span class="icon"></span>Bakery</a>
-    <a href="javascript:;" class="item"><span class="icon"></span>Pantry</a>
-    <a href="javascript:;" class="item"><span class="icon"></span>Snacks&Sweets</a>
-    <a href="javascript:;" class="item"><span class="icon"></span>Frozen Food</a>
-    <a href="javascript:;" class="item"><span class="icon"></span>Beverages</a>
-    <a href="javascript:;" class="item"><span class="icon"></span>Baby&Body care</a>
-    <a href="javascript:;" class="item"><span class="icon"></span>Pet / House</a>
-  </div>
-</section>
-<section class="cate_list_show p30">
-  <h3 class="title flex rowflexbteew">
-    <p><span id="showTab">The Market</span> <span class="icon"></span> <em></em></p>
-    <a href="javascript:;">All <span class="icon iconfont icon-jiantouxi"></span></a>
-  </h3>
-  <ul class="cate_show_ul flex">
-    <li class="item">
-      <a href="javascript:;">
-        <img src="../assets/img/cateimg.png" alt="l02" title='img01'/>
-        <p class="info">Butcher Shop</p>
-      </a>
-    </li>
-    <li class="item">
-      <a href="javascript:;">
-        <img src="../assets/img/cateimg.png" alt="l02" title='img01'/>
-        <p class="info">Butcher Shop</p>
-      </a>
-    </li>
-    <li class="item">
-      <a href="javascript:;">
-        <img src="../assets/img/cateimg.png" alt="l02" title='img01'/>
-        <p class="info">Butcher Shop</p>
-      </a>
-    </li>
-    <li class="item">
-      <a href="javascript:;">
-        <img src="../assets/img/cateimg.png" alt="l02" title='img01'/>
-        <p class="info">Butcher Shop</p>
-      </a>
-    </li>
-    <li class="item">
-      <a href="javascript:;">
-        <img src="../assets/img/cateimg.png" alt="l02" title='img01'/>
-        <p class="info">Butcher Shop</p>
-      </a>
-    </li>
-    <li class="item">
-      <a href="javascript:;">
-        <img src="../assets/img/cateimg.png" alt="l02" title='img01'/>
-        <p class="info">Butcher Shop</p>
-      </a>
-    </li>
-  </ul>
-</section>
-<a class="bottomImg p30">
-  <img src="../assets/img/cateBottomimg.png" alt="bottomimg" title="bottom"/>
-</a>
-</article>
+  </article>
 </div>
 </template>
 
@@ -147,28 +81,62 @@ export default {
   data () {
     return {
       navList:[],
-      menuList:[]
-
-
+      menuList:[],
+      classifyList:[],
+      txt:"",
+      flag:0
     }
 
   },
   created(){
-     
+
   },
   beforeMount(){
+    this.startGetData();
+ },
+ mounted () {
+
+ },
+ methods:{
+  startGetData:function(){
+       this.$axios.get('/api/categories').then(res=>{
+     if(res.status==200&&res.data.navList.length>0) {
+      this.navList = res.data.navList;
+      this.menuList = res.data.menuList;
+      this.txt = this.menuList[0].txt;
+      this.classifyList = this.menuList[0].classilyList;
+      this.$nextTick(function(){
+        new Swiper('#cag_list', {
+          effect : 'horizontal',
+          slidesPerView: "auto",
+          centeredSlides:false,
+          spaceBetween: 10,
+        });
+      })
+    }
+  })
+},
+   tabChecked:function(i){
+     this.menuList.forEach((item,index)=>{
+      if(i===index){
+        this.txt = this.menuList[index].txt; 
+        this.flag = index;
+        this.classifyList = this.menuList[index].classilyList;    
+      }
+     })
+   },
+   roterLink :function(i){
+      this.classifyList.forEach((item, index)=> {
+         if(i == index){
+          this.$router.push({path:'/classily',params:{id:item.classilyId}});
+        }
+     });
     
-  },
-  mounted () {
-    new Swiper('#cag_list', {});
-    this.$axios.get('/api/categories').then(res=>{
-         if(res.status==200&&res.data.navList.length>0) {
-            this.navList = res.data.navList;
-            this.menuList = res.data.menuList
-         }
-    })
-  }
+     
+   }
+ }
 }
+
 </script>
 
 <style scoped="scoped">

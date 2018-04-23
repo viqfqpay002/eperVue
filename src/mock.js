@@ -329,6 +329,7 @@ mock.mock('/api/categories',(req,res)=>{
         classilyId:1,
         navMsg:"Organic",
         navIcon:"/static/img/catetips.png",
+        
       },{
         classilyId:2,
          navMsg:"Vegetarian",
@@ -403,6 +404,10 @@ mock.mock('/api/categories',(req,res)=>{
           classilyId:201,
           title:"Butcher Shop",
           classilyImg:"/static/img/cateimg.31360a2.png"
+        },{
+          classilyId:202,
+          title:"Butcher Shop",
+          classilyImg:"/static/img/cateimg.31360a2.png"
         }]
         },{
            txt:"Bakery",
@@ -454,12 +459,6 @@ mock.mock('/api/categories',(req,res)=>{
           classilyImg:"/static/img/cateimg.31360a2.png"
         }] 
       }
-
-         
-        
-        
-
-         
 
    ]
   }

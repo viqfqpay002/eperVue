@@ -3,7 +3,8 @@
 	padding: 0 0.266667rem;
 	text-align: center;
 	font-size: 0.32rem;
-	padding-top: 1.066667rem
+	padding-top: 1.066667rem;
+	padding-bottom: 1.6rem
 }
 .goodsDetails .msgBox {
 	padding: 0.533333rem 0;
@@ -87,7 +88,7 @@
 	color: #f58220
 }
 .goods_info{
-	height:2.666667rem
+	background: #fff;
 }
 .goods_info .title{
    text-align: left;
@@ -108,4 +109,49 @@
 }
 .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
   opacity: 0;
+}
+.cart_footer .innerpadding{
+	height: 100%;
+   padding: 0 0.266667rem;
+}
+.cart_footer .icon{
+	font-size: 0.8rem;
+	position: relative
+}
+.cart_footer .icon strong{
+	display: inline-block;
+	width: 0.533333rem;
+	height: 0.533333rem;
+	border-radius: 50%;
+	background: #f58220;
+   font-size: 0.266667rem;
+   position: absolute;
+   right: 0;
+   top:0.106667rem;
+   color: #fff;
+   line-height: 0.533333rem;
+   text-align: center;
+}
+.cart_footer .counter{
+	width: 4.0rem;
+	font-size: 0.55556rem;
+	border: 1px solid #ddd ;
+}
+.cart_footer .counter dd.sub,.cart_footer .counter dd.push{
+   width: 60%;
+   background: #ddd;
+   text-align: center;
+}
+.cart_footer .counter input[type="text"]{
+	width: 100%;
+	font-size:0.4rem;
+	text-align: center;
+	color: #ff0000
+}
+.cart_footer .addCart{
+	width: 2.666667rem;
+	background: #f58220;
+	color: #fff;
+	font-size:0.32rem;
+	padding: 0.266667rem;
 }

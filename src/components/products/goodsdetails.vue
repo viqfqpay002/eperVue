@@ -1,7 +1,9 @@
 <template>
    <div id="goodsDetails">
      <header class="header flex midcenter login_header">
-       <h3 class="title flex rowflexbteew p30"><a href="javascript:;" class="icon js_go_history"> < </a> <p>Product Details</p>
+       <h3 class="title flex rowflexbteew p30">
+        <a href="javascript:;" class="icon js_go_history" @click="activated"> < </a>
+        <p>Product Details</p>
         <span class="icon iconfont icon-aixin"></span>
        </h3>
      </header>
@@ -50,12 +52,35 @@
                   XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
                   XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
                   XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+                    XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+                  XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+                  XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+                  XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+                    XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+                  XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+                  XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+                  XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+                    XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+                  XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+                  XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+                  XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
                </div>
           </div>
 
-       </article>
-    
-   </div>
+       </article>  
+       <footer class="cart_footer footer ">
+        <div class="innerpadding flex rowflexbteew midcenter">
+        <span class="icon icon_add_cart iconfont icon-gouwuchetianjia"><strong>10</strong></span>
+        <dl class="flex rowflex counter">
+          <dd class="sub" @click="changeCount(-1)">-</dd>
+          <dd><input class="NumInput" type="text" v-model="count"/></dd>
+          <dd class="push" @click="changeCount(1)">+</dd>
+        </dl>
+        <button type="button" class="addCart">加入购物车</button>
+      </div>
+      </footer>
+      
+      </div>
 </template>
 <script>
   export default {
@@ -71,12 +96,17 @@
                pOrigin:"",
                pIcon:"" , //用来显示icon标记的
                shelf:"",
+               count:1,
+              
             }
         },
   created(){
      this.startData()
   },
   methods: {
+      activated: function () {
+                 this.$setgoindex()
+                 },
      startData: function(){
              const routeId = this.$route.params.id
              this.$axios.get('/api/indexList'/*,{params:{id:routeId}}*/).then(res=>{
@@ -108,7 +138,20 @@
               });
               }
            })   
-     }
+     },
+      changeCount: function(way){
+          if(way>0){
+              this.count++;
+            if(this.count>=50){
+                this.count=50
+            }
+          }else{
+              this.count--;
+            if(this.count<1){
+                 this.count=1
+            }
+          }
+       },
   },
    watch:{
     '$route'(){

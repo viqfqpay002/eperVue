@@ -23,7 +23,9 @@
          <li class="item search">
            <h3 class="title">Me</h3>
            <!--  <input type="text" class="search_input" placeholder="Search..."> -->
-           <router-link to="/usercenter/settings" class="icon iconfont icon-search icon-shezhi" id="js_set"></router-link>
+           <router-link :to="{name:'settings'}" class="icon iconfont icon-search icon-shezhi" id="js_set">
+             
+           </router-link>
          </li>
          <li class="item email">
            <a href="javascript:;" class="icon iconfont icon-email icon-xinfeng"></a>
@@ -124,11 +126,17 @@
                account:"",
                coupons:"",
                grade:"",
-             username:""
+               username:""
            }
        },
      beforeMount(){
-       let uid = localStorage.getItem('user');
+       this.startGetData()
+     },
+     mounted(){
+     },
+     methods:{
+      startGetData: function(){
+         let uid = localStorage.getItem('user');
        let Base64 = require('js-base64').Base64;
        if(uid==null){
          this.isShow=!this.isShow;
@@ -153,8 +161,7 @@
            }
          })
        }
-     },
-     mounted(){
+      }
      }
    }
 </script>
