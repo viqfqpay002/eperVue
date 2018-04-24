@@ -107,7 +107,7 @@ export default {
      this.$setgoindex()
   },
   startGetData: function(){
-   let user = localStorage.getItem('user');
+   let user = localStorage.getItem('token');
    if(user == null){
      this.loginShow= !this.loginShow;
    }else{
@@ -178,7 +178,7 @@ allClecked: function(){
   this.itemTotal()
 },
 delItem: function(i){
- let user = localStorage.getItem('user');
+ let user = localStorage.getItem('token');
  let Base64 = require('js-base64').Base64;
  this.cartList.forEach((item,index)=>{
    if(i==index){

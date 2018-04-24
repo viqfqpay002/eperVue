@@ -6,6 +6,7 @@ import router from './router'
 import axios from 'axios'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 
+
 import './assets/js/flexible'
 import  './assets/js/validate'
 import './mock'
@@ -15,6 +16,9 @@ import 'js-base64'
 import './assets/css/swiper.min.css'
 import './assets/css/common.css'
 import './assets/css/font.css'
+
+
+
 Vue.use(VueAwesomeSwiper);
 Vue.prototype.$axios = axios;
 Vue.config.productionTip = false;

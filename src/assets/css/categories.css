@@ -55,6 +55,7 @@ display: none;
 	box-shadow: 0px 4px 4px 0px 
 		rgba(249, 149, 38, 0.4);
 	color: #fff;
+    transition: all 0.2s ease-in-out;
 }
 .select_ul .active .icon{
 	display: block
@@ -69,12 +70,13 @@ display: none;
 	height: 0.96rem;
 	line-height: 0.96rem;
 	position: relative;
-          
+    
 }
 .cate_list_show .title p{
 	width: 3.066667rem;
 	text-align: center;
 	border-bottom: 2px solid #ddd;
+	transition: all 0.2s ease-in-out  ;
 	position: relative
 }
 .cate_list_show .title p .icon{
@@ -107,10 +109,12 @@ margin-left: -0.2rem;
 }
 .cate_show_ul{
 	padding-bottom: 1.066667rem;
+	-webkit-flex-flow: row wrap;
 	flex-flow: row wrap;
 }
 .cate_show_ul .item{
-	margin-top: 0.533333rem
+	margin-top: 0.533333rem;
+	text-align: center;
 }
 .cate_show_ul .item a{
 	display: block;

@@ -172,7 +172,7 @@ export default {
   },
   methods: {
      getData: function(){
-           let uid = localStorage.getItem('user');
+           let uid = localStorage.getItem('token');
     if(uid!=null){
       this.flag= !this.flag;
     }

@@ -50,7 +50,7 @@ export default {
                let Base64 = require('js-base64').Base64;
                let uid= Base64.encode(this.phone);
                this.$router.push('/');
-               localStorage.setItem("user",uid);
+               localStorage.setItem("token",uid);
              }else {
                this.error="请确认您的手机号与密码"
              }

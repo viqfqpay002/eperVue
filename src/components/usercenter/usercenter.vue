@@ -136,7 +136,7 @@
      },
      methods:{
       startGetData: function(){
-         let uid = localStorage.getItem('user');
+         let uid = localStorage.getItem('token');
        let Base64 = require('js-base64').Base64;
        if(uid==null){
          this.isShow=!this.isShow;

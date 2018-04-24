@@ -15,12 +15,17 @@ import classily from '@/components/products/classifylist'
 
 Vue.use(Router);
 
-export default new Router({
+
+
+const router =  new Router({
   routes: [
   {
     path: '/',
     name: 'index',
-    component: index
+    component: index,
+      meta: {
+      requiresAuth: true
+    }
   },
   {
     path:'/login',
@@ -65,5 +70,19 @@ export default new Router({
   name:"classily",
   component:classily
 }
-]
+],
+
 })
+router.beforeEach((to, from, next) => {
+  let token = window.localStorage.getItem('token') 
+  if (to.matched.some(record => record.meta.requiresAuth) && (!token || token === null)) {
+    next({
+      path: '/login',
+      query: { redirect: to.fullPath }
+    })
+  } else {
+    next()
+  }
+});
+
+export default router;

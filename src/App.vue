@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <div v-show="flag" class="loading flex midcenter"><p>{{loading}}</p></div>
+    <loading v-show="flag"></loading>
     <transition name="component-fade" mode="out-in">
      <router-view v-if="isRouterAlive"></router-view>
    </transition>
@@ -43,27 +43,31 @@
 </template>
 
 <script>
-
+import LoadingComponent from "@/components/loading.vue";
 export default {
   name: 'App',
+   components: {
+    'loading':LoadingComponent
+  },
   data(){
     return{
       cartNum:0,
       isRouterAlive:true,
-      loading:"loading....",
-      flag:true,
       footerShow:true,
       routeName:this.$route.name,
+      flag:true
       
     }
   },
-
   beforeMount(){ 
+ 
+  },
+  created(){
    
   },
   mounted(){
-   this.flag = !this.flag;
-   this.startGetData(this.routeName)
+   this.startGetData(this.routeName);
+   this.flag=false;
  },
  methods: {
    startGetData: function(name){
@@ -72,8 +76,9 @@ export default {
     }else{
       this.footerShow = true
     } 
-    let user = localStorage.getItem('user');
+    let user = localStorage.getItem('token');
     let Base64 = require('js-base64').Base64;
+ 
     if(user!=null){
      this.$axios.post('/api/user').then(res=>{
        if(res.status===200 && res.data!=''){
@@ -95,7 +100,11 @@ watch:{
   '$route'(){
    let routeName = this.$route.name;
    this.routeName = routeName;
-   this.startGetData(routeName)
+   this.startGetData(routeName);
+   this.flag=true;
+   setTimeout(()=>{
+    this.flag=false;
+   },550)
  }
 }
 }

@@ -57,7 +57,7 @@ export default {
      this.$setgoindex()
    },
    startGetData: function(){
-     let user = localStorage.getItem('user');
+     let user = localStorage.getItem('token');
      let Base64 = require('js-base64').Base64;
      if(user!=null){
        this.$axios.post('/api/user').then(res=>{

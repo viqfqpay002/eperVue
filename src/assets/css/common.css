@@ -416,22 +416,9 @@ body{
   position: absolute;
   z-index: 105
 }
-
-
 .component-fade-enter-active, .component-fade-leave-active {
-  transition: opacity .2s ease;
+  transition: opacity .5s ease;
 }
 .component-fade-enter, .component-fade-leave-to {
   opacity: 0;
-}
-.loading{
-  width: 100vw;
-  height: 100vh;
-  background: #fff;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 99999
 }
