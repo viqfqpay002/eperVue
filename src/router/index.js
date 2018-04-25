@@ -66,7 +66,7 @@ const router =  new Router({
   name:'detail',
   component:details 
 },{
-  path:"/classily?:id",
+  path:"/classily/:id",
   name:"classily",
   component:classily
 }

@@ -1,5 +1,6 @@
 .classifylist .mark{
-	height: 100%;
+	height: 100vh;
+	min-height: 100%;
 	position: absolute;
 	z-index: 9;
     top: 0;
@@ -9,7 +10,10 @@
     background: rgba(0, 0, 0, 0.3);
 }
 .classifylist .scroll_body{
-	padding-top:1.893333rem;
+	padding-top:1.093333rem;
+}
+.classifylist .scroll_body .product{
+	padding-top: 1.066667rem;
 }
 .menuTop{
   position:fixed;
@@ -17,7 +21,6 @@
   width: 100%;
   background: #fff;
   z-index: 10;
-
 }
 .menuTop .topnav .item{
 	padding: 0 0.266667rem;
@@ -29,16 +32,21 @@
 }
 .menuTop .menuBox>.item{
 	width: 40%;
-	height: 1.066667rem;
-	border: 1px solid #ddd;
+	
 	text-align: center;
-	line-height: 1.066667rem
 	
 }
 .menuTop .menuBox>.item>a{
 	display: inline-block;
 	width: 100%;
+	height: 1.066667rem;
+	line-height: 1.066667rem;
+	border: 1px solid #ddd
 	
+}
+.menuTop .menuBox .active{
+    border: none !important;
+    background: #f7f7f7 
 }
 .menuTop .menuBox>.item>.itemBox{
 	position: absolute;
@@ -49,14 +57,16 @@
 	background: #fff;
 	flex-flow: row wrap;
 }
-
 .menuTop .menuBox>.item>.itemBox>.item{
 	width: 30%;
 	padding-left: 0.266667rem;
-	font-size: 0.32rem
+	font-size: 0.32rem;
+		height: 1.066667rem;
+	line-height: 1.066667rem;
+
 }
 .slide-fade-enter-active {
-  transition: all .5s ease;
+  transition: all .3s ease;
 }
 .slide-fade-leave-active {
   transition: all .5s cubic-bezier(1.0, 0.5, 0.8, 1.0);

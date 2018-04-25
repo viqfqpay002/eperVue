@@ -12,7 +12,8 @@
 	width: 50%;
 	font-size:0.373333rem;
 	padding-bottom: 0.533333rem;
-	position: relative
+	position: relative;
+	transition: all 0.5s ease-in-out
 }
 .product .product_ul .item>a{
 	display: block;
@@ -45,4 +46,23 @@
 
 .product_ul .item .no_icon{
    color: #666 !important;
+}
+.product_ul .item_tab{
+	width: 100% !important;
+	transition: all 0.8s ease-in-out
+
+}
+.product_ul .item_tab>a{
+   display: flex !important;
+   flex-flow: row nowrap;
+}
+.product_ul .item_tab .img_box{
+	width: 40%;
+}
+.product_ul .item_tab .info_box{
+	border-bottom: 1px solid #ddd;
+	padding-bottom: 0.266667rem !important;
+}
+.product_ul .item_tab .iconfont{
+	 bottom:0.6rem !important;
 }

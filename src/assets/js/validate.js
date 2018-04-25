@@ -35,7 +35,7 @@ Validator.extend('phone', {
 });
 Validator.extend('password', {
   getMessage: field => "请输入6位以上包含数字与字母的密码",
-  validate: value => value.length >6 &&  /^[A-Za-z]+[0-9]+[A-Za-z0-9]*|[0-9]+[A-Za-z]+[A-Za-z0-9]*$/g.test(value)
+  validate: value => value.length >=6 /*&&  /^[A-Za-z]+[0-9]+[A-Za-z0-9]*|[0-9]+[A-Za-z]+[A-Za-z0-9]*$/g.test(value)*/
 });
 Validator.extend('ver', {
   getMessage: field => "请输入6位短信验证码",

@@ -461,10 +461,8 @@ mock.mock('/api/categories',(req,res)=>{
 
 ]
 }
-
-
 });
-let classilyId="";
+//分类列表
 mock.mock('/api/classily',(res,req)=>{
   return{
     navClassily:[{

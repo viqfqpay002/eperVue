@@ -36,7 +36,7 @@
         <div class="swiper-container"  id="cag_list">
           <ul class="scroll_nav flex rowflexbteew swiper-wrapper ">
             <li class="item  swiper-slide " v-for="item in navList">
-              <router-link :to="{name:'classily',query:{id:item.classilyId}}">
+              <router-link :to="{name:'classily',params:{id:item.classilyId}}">
                <span class="icon">
                 <img :src="item.navIcon" alt="tip" title="tips"/>
               </span>
@@ -60,7 +60,7 @@
       </h3>
       <ul class="cate_show_ul flex" > 
         <li class="item" v-for="(item,index) in classifyList">
-          <router-link :to="{name:'classily',query:{id:item.classilyId}}">
+          <router-link :to="{name:'classily',params:{id:item.classilyId}}">
             <img :src="item.classilyImg" alt="item.classilyId" title='item.title'/>
             <p class="info">{{item.title}}</p>
           </router-link>

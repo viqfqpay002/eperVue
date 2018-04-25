@@ -10,7 +10,7 @@
          <span class="errinfo" v-show="errors.has('phone')" v-cloak>{{ errors.first('phone') }}</span>
        </div>
        <div class="input_group password_box">
-        <input type="text" class="password" v-validate="'required|password'" placeholder="Password" name="password" :class="{'input': true, 'is-danger': errors.has('password') }" v-model="password"/>
+        <input type="password" class="password" v-validate="'required|password'" placeholder="Password" name="password" :class="{'input': true, 'is-danger': errors.has('password') }" v-model="password"/>
         <span class="errinfo" v-show="errors.has('password')" v-cloak>{{errors.first('password')}}</span>
       </div>
       <span class="errinfo">{{error}}</span>
@@ -27,6 +27,8 @@
 </div>
 </template>
 <script>
+import {userLogin} from '../axios/api';
+import md5 from 'js-md5'
 export default {
   name: 'login',
   data () {
@@ -44,22 +46,36 @@ export default {
     if (this.phone !== "" && this.password !== "") {
       this.$validator.validateAll().then((result)=>{
        if(result){
-         this.$axios.post('/api/user', {phone: this.phone, password: this.password}).then(res => {
-           for(let i=0;i<res.data.data.length;i++){
-             if(this.phone === res.data.data[i].mobile && this.password === res.data.data[i].password){
-               let Base64 = require('js-base64').Base64;
-               let uid= Base64.encode(this.phone);
-               this.$router.push('/');
-               localStorage.setItem("token",uid);
-             }else {
-               this.error="请确认您的手机号与密码"
+         userLogin(this.phone,md5(this.password)).then(res=>{
+             if(res.status===200){
+                 if(this.phone===res.data.data.ComMobile){
+                     let Base64 = require('js-base64').Base64;
+                     let uid= Base64.encode(this.phone);
+                       this.$router.push('/');
+                      localStorage.setItem("token",uid)
+                 }else {
+                      this.error="此手机号码未被注册!!"
+                 }
+               
              }
-           }
-         }
-         ).catch(res=>{
-           console.log(res.msg)
+              
          })
-       }
+       //   this.$axios.post('/api/user', {phone: this.phone, password: this.password}).then(res => {
+       //     for(let i=0;i<res.data.data.length;i++){
+       //       if(this.phone === res.data.data[i].mobile && this.password === res.data.data[i].password){
+       //         let Base64 = require('js-base64').Base64;
+       //         let uid= Base64.encode(this.phone);
+       //         this.$router.push('/');
+       //         localStorage.setItem("token",uid);
+       //       }else {
+       //         this.error="请确认您的手机号与密码"
+       //       }
+       //     }
+       //   }
+       //   ).catch(res=>{
+       //     console.log(res.msg)
+       //   })
+        }
      });
 
     }
