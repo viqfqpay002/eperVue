@@ -22,7 +22,7 @@
     </a>
   </article>
   <div class="footer user_footer">
-    <router-link to="register" class="go_register">Register <span class="icon"></span> </router-link>
+    <router-link to="/register" class="go_register">Register <span class="icon"></span> </router-link>
   </div>
 </div>
 </template>
@@ -46,35 +46,41 @@ export default {
     if (this.phone !== "" && this.password !== "") {
       this.$validator.validateAll().then((result)=>{
        if(result){
-         userLogin(this.phone,md5(this.password)).then(res=>{
-             if(res.status===200){
-                 if(this.phone===res.data.data.ComMobile){
-                     let Base64 = require('js-base64').Base64;
-                     let uid= Base64.encode(this.phone);
-                       this.$router.push('/');
-                      localStorage.setItem("token",uid)
-                 }else {
-                      this.error="此手机号码未被注册!!"
-                 }
+         // userLogin(this.phone,md5(this.password)).then(res=>{
+         //     if(res.status===200){
+         //         if(this.phone===res.data.data.ComMobile){
+         //              this.$router.push({path:"/"});
+         //             let Base64 = require('js-base64').Base64;
+         //             let uid= Base64.encode(this.phone);
+         //              localStorage.setItem("token",uid);
+         //              localStorage.setItem("usp",md5(this.password));
+         //              if(res.data.status==="1"){
+         //                 localStorage.setItem("status",res.data.status);
+         //              }else {
+         //                 localStorage.setItem("status",0);
+         //              }
+         //         }else {
+         //              this.error="此手机号码未被注册!!"
+         //         }
                
-             }
+         //     }
               
+         // })
+         this.$axios.post('/api/user', {phone: this.phone, password: this.password}).then(res => {
+           for(let i=0;i<res.data.data.length;i++){
+             if(this.phone === res.data.data[i].mobile && this.password === res.data.data[i].password){
+               let Base64 = require('js-base64').Base64;
+               let uid= Base64.encode(this.phone);
+               this.$router.push('/');
+               localStorage.setItem("token",uid);
+             }else {
+               this.error="请确认您的手机号与密码"
+             }
+           }
+         }
+         ).catch(res=>{
+           console.log(res.msg)
          })
-       //   this.$axios.post('/api/user', {phone: this.phone, password: this.password}).then(res => {
-       //     for(let i=0;i<res.data.data.length;i++){
-       //       if(this.phone === res.data.data[i].mobile && this.password === res.data.data[i].password){
-       //         let Base64 = require('js-base64').Base64;
-       //         let uid= Base64.encode(this.phone);
-       //         this.$router.push('/');
-       //         localStorage.setItem("token",uid);
-       //       }else {
-       //         this.error="请确认您的手机号与密码"
-       //       }
-       //     }
-       //   }
-       //   ).catch(res=>{
-       //     console.log(res.msg)
-       //   })
         }
      });
 

@@ -23,9 +23,9 @@ const router =  new Router({
     path: '/',
     name: 'index',
     component: index,
-      meta: {
-      requiresAuth: true
-    }
+    //   meta: {
+    //   requiresAuth: true
+    // }
   },
   {
     path:'/login',

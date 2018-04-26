@@ -102,7 +102,7 @@
       <section class="mianContent">
         <section class="product">
           <ul class="product_ul flex" >
-            <li class="item" v-for="(item,index) in product">
+            <li class="item" v-for="(item,index) in product" :id="item.pId">
               <router-link :to="{name:'detail',params:{ id:item.pId}}">
                 <div class="img_box">
                   <img :src="item.pImg" :alt="item.pId" :title="item.pTitle"/>
@@ -110,10 +110,10 @@
                 <div class="info_box">
                   <p class="info">{{item.pTitle}} {{item.specification}}</p>
                   <p class="i_country">Origin:<span>{{item.pOrigin}}</span></p>
-                  <p class="i_price">￥{{item.price|keepTwoNum}}</p>
+                  <p class="i_price">￥<span>{{item.price|keepTwoNum}}</span></p>
               </div>
             </router-link>
-            <span :class="['icon','icon_add_cart','iconfont','icon-gouwuchetianjia',{'no_icon':item.inventory>1?'':'no_icon'}]"></span>
+            <span :class="['icon','icon_add_cart','iconfont','icon-gouwuchetianjia',{'no_icon':item.inventory>1?'':'no_icon'}]" @click="$addCart(item,index)"></span>
           </li>
           </ul>
           <a href="javascript:;" class="more">More →<span class="icon"></span></a>
@@ -156,6 +156,7 @@
   </div>
 </template>
 <script>
+import $ from 'jquery'
 export default {
   name: 'index',
   data () {
@@ -163,15 +164,20 @@ export default {
           flag:true,
           product:[],
           banner:[],
-          brands:[]
+          brands:[],
+          getFootercart:'',
+          index:""
     }
-
+    
   },
-  beforeMount() {
-     this.getData()
+
+ mounted() {
+     this.getData();
+
   },
   methods: {
      getData: function(){
+     
     let uid = localStorage.getItem('token');
     if(uid!=null){
       this.flag= !this.flag;
@@ -192,7 +198,8 @@ export default {
               });
         };
      });
-     }
+     },
+ 
   }
 }
 </script>

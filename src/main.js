@@ -5,8 +5,7 @@ import App from './App'
 import router from './router'
 import axios from 'axios'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
-import md5 from 'js-md5'
-
+import $ from 'jquery'
 
 import './assets/js/flexible'
 import  './assets/js/validate'
@@ -21,7 +20,7 @@ import './assets/css/font.css'
 
 
 
-Vue.use(VueAwesomeSwiper,md5);
+Vue.use(VueAwesomeSwiper);
 Vue.prototype.HOST = 'http://192.168.1.151:8099/MarketAPI';
 Vue.prototype.$axios = axios;
 Vue.prototype.$axios.defaults.withCredentials=true; 
@@ -55,6 +54,71 @@ Vue.prototype.$setgoindex = function () {
   this.$router.back(-1)
 }
 };
+
+
+  $.extend($.easing, {
+        easeOutExpo: function(x, t, b, c, d) {
+            return (t == d) ? b + c : c * (-Math.pow(2, -1 * t / d) + 1) + b;
+        }
+    });
+Vue.prototype.$addCart = function(item,index){
+   let iconX = $('.icon_add_cart').eq(index).offset().left;
+        let iconY = $('.icon_add_cart').eq(index).offset().top;
+        let footerCartX = $("#cart").offset().left;;
+        let footerCartY = $("#cart").offset().top;
+        let itemImg = $('.icon_add_cart').eq(index).parents('.item').find('img').prop('src');
+        let pid = $('.icon_add_cart').eq(index).parents('.item').prop('id');
+        let ptitle = $('.icon_add_cart').eq(index).parents('.item').find('.info').text();
+        let country = $('.icon_add_cart').eq(index).parents('.item').find('.i_country span').text();
+        let price = $('.icon_add_cart').eq(index).parents('.item').find('.i_price span').text();
+      
+    if($('.icon_add_cart').eq(index).hasClass('no_icon')){
+           alert("此商品无库存！")
+           return false
+    }else {
+       let user = localStorage.getItem('token');
+       let Base64 = require('js-base64').Base64;
+        Vue.prototype.$axios.post('/api/user').then(res=>{
+                res.data.data.forEach((item,index)=>{
+                    if(item.mobile===Base64.decode(user)){
+                       let arr = {
+                             "pid":pid,
+                             "pimg":itemImg,
+                             "ptitle":ptitle,
+                             "price":price,
+                             "country":country,
+                             "count":1
+                       };
+                       item.cartList.push(arr);
+                         item.cartNum ++ ;
+                    }
+                })
+              });
+        let html = '<img class="flyImg"/>';
+            $(".flyImg").prop('src',itemImg);
+            $(".flyImg").css({
+              "position": "absolute",
+              "left":iconX,
+              "top":iconY,
+              "zIndex":99999,
+              "width": 0.533333+"rem",
+              "height": 0.533333+"rem",
+            })
+            $('body').append(html);
+            $(".flyImg").animate({
+               'left':footerCartX+30,
+               'top':footerCartY+400,
+               'width':5,
+               'height':5,
+               'opacity':0.4
+            },function(){
+              $(this).remove();
+            },"easeOutExpo")          
+    }
+           
+    },    
+
+
 
 new Vue({
   el: '#app',

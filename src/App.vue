@@ -18,7 +18,7 @@
           <p class="title">Categories</p>
         </router-link>
       </li>
-      <li class="item cart">
+      <li class="item cart" id="cart">
         <router-link to="/cart" :class='{isActive:routeName=="cart"}'>
           <span class="icon iconfont icon-gouwuche"></span>
           <p class="title">Cart</p>
@@ -43,6 +43,7 @@
 </template>
 
 <script>
+import $ from 'jquery'
 import LoadingComponent from "@/components/loading.vue";
 export default {
   name: 'App',
@@ -55,9 +56,9 @@ export default {
       isRouterAlive:true,
       footerShow:true,
       routeName:this.$route.name,
-      flag:true
-      
+      flag:true,
     }
+
   },
   beforeMount(){ 
  
@@ -68,11 +69,12 @@ export default {
   mounted(){
    this.startGetData(this.routeName);
    this.flag=false;
+   
  },
  methods: {
    startGetData: function(name){
      if(name=="login"||name=="register"||name=="detail"){
-      this.footerShow= !this.footerShow;
+      this.footerShow= false;
     }else{
       this.footerShow = true
     } 
@@ -103,8 +105,8 @@ watch:{
    this.startGetData(routeName);
    this.flag=true;
    setTimeout(()=>{
-    this.flag=false;
-   },550)
+     this.flag=false;
+   },500)
  }
 }
 }

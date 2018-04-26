@@ -51,7 +51,7 @@
              <ul class="user_msg_list flex rowflexbteew"  >
                <li class="item">
                  <p class="info">Account Balance</p>
-                 <p class="info_count">${{account}}</p>
+                 <p class="info_count">${{account|keepTwoNum}}</p>
                </li>
                <li class="item">
                  <p class="info">My Coupons</p>
@@ -117,15 +117,16 @@
    </div>
 </template>
 <script>
+import {userLogin} from '../../axios/api';
    export default{
        name:"userCenter",
        data(){
            return{
                isShow:false,
-               integral:"",
-               account:"",
-               coupons:"",
-               grade:"",
+               integral:0,
+               account:0,
+               coupons:0,
+               grade:"普通会员",
                username:""
            }
        },
@@ -136,11 +137,27 @@
      },
      methods:{
       startGetData: function(){
-         let uid = localStorage.getItem('token');
+       let uid = localStorage.getItem('token');
        let Base64 = require('js-base64').Base64;
-       if(uid==null){
+       let usp = localStorage.getItem('usp');
+       let status = localStorage.getItem('status');
+       if(/*status!=="1"*/uid===""){
          this.isShow=!this.isShow;
        }else {
+         // userLogin(Base64.decode(uid),usp).then(res=>{
+         //  console.log(res.data.data);
+         //   if(res.data.data.ComMobile===Base64.decode(uid)){
+         //       this.integral= res.data.data.CusJiFen;
+         //          this.account =res.data.data.CusFundAmount;
+         //         this.coupons = res.data.data.CanCashVoucherNum;
+         //         this.grade = res.data.data.CusLevelID;
+         //          if(res.data.data.UserName===""){
+         //             this.username = res.data.data.ComMobile
+         //         }else {
+         //              this.username = res.data.data.UseName
+         //         }
+         //   }
+         // })
          this.$axios.post('/api/user').then(res=>{
            let data = res.data.data;
            if(data.length>0){

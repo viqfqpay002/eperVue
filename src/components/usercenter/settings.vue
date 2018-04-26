@@ -24,8 +24,8 @@ export default{
      this.$setgoindex()
    },
    loginOut:function(){
-     localStorage.clear();
-     this.$router.push('/')
+     this.$router.push({name:"index"})
+     localStorage.removeItem('token');
    }
  }
 }
