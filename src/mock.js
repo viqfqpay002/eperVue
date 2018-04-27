@@ -12,20 +12,20 @@ mock.mock('/api/user',(req,res)=>{
      grade:"Gold Member",
      password:"111666vv",
      integral:"10000",
-     cartNum:"3",
+     cartNum:3,
      account:6000.00,
      coupons:3,
      cartList:[
      {
        pid:"0042",
-       pimg:"assets/img/cartimg.png",
+       pimg:"src/img/cartimg.png",
        ptitle:"Vineyard, Shine Muscat Green Grapes600g±5%",
        price:"100.00",
        country:"China",
        count:1
      },{
        pid:"0052",
-       pimg:"../src/img/cartimg.png",
+       pimg:"src/img/cartimg.png",
        ptitle:"Vineyard, Shine Muscat Green Grapes600g±5%",
        price:"101.03",
        country:"China",
@@ -389,12 +389,6 @@ mock.mock('/api/categories',(req,res)=>{
    classilyId:106,
    title:"Deli",
    classilyImg:"/static/img/cateimg.31360a2.png"
- },{
-
-   classilyId:107,
-   title:"Easy Cooking",
-   classilyImg:"/static/img/cateimg.31360a2.png"
-
  }]
 },
 {
@@ -687,6 +681,73 @@ mock.mock('/api/classily',(res,req)=>{
         }           
        ]
 
+  }
+   
+})
+
+//积分商城
+mock.mock('/api/eperbox',(res,req)=>{
+  return{
+     data:[{
+          "id":501,
+          "intetitle":"Carambar, VeryBad Kids Sour Soda Flavor1234564987888991",
+          "point":10000,
+          "price":500.00,
+          "self":1000,
+          "inteImg":"../assets/img/eperClubimg.png"
+     },{
+          "id":502,
+          "intetitle":"Carambar, VeryBad Kids Sour Soda Flavor1234564987888991",
+          "point":5000,
+          "price":100.00 ,
+          "self":10,
+          "inteImg":"../assets/img/eperClubimg.png"  
+     },{
+          "id":503,
+          "intetitle":"Carambar, VeryBad Kids Sour Soda Flavor1234564987888991",
+          "point":800,
+          "price":20.00,
+          "self":0,
+          "inteImg":"../assets/img/eperClubimg.png"  
+
+     },{
+          "id":504,
+          "intetitle":"Carambar, VeryBad Kids Sour Soda Flavor1234564987888991",
+          "point":2000,
+          "price":200.00,
+          "self":100,
+          "inteImg":"../assets/img/eperClubimg.png"  
+
+     },{
+         "id":505,
+          "intetitle":"Carambar, VeryBad Kids Sour Soda Flavor1234564987888991",
+          "point":60,
+          "price":0.00,
+          "self":100,
+          "inteImg":"../assets/img/eperClubimg.png"  
+     },{
+          "id":506,
+          "intetitle":"Carambar, VeryBad Kids Sour Soda Flavor1234564987888991",
+          "point":500,
+          "price":0.00,
+          "self":0,
+          "inteImg":"../assets/img/eperClubimg.png"   
+     },{
+          "id":507,
+          "intetitle":"Carambar, VeryBad Kids Sour Soda Flavor1234564987888991",
+          "point":500,
+          "price":800.00,
+          "self":800,
+          "inteImg":"../assets/img/eperClubimg.png"   
+     },{
+          "id":508,
+          "intetitle":"Carambar, VeryBad Kids Sour Soda Flavor1234564987888991",
+          "point":50,
+          "price":0,
+          "self":8000,
+          "inteImg":"../assets/img/eperClubimg.png" 
+     }]
+ 
   }
    
 })

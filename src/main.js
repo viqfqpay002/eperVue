@@ -55,30 +55,39 @@ Vue.prototype.$setgoindex = function () {
 }
 };
 
-
-  $.extend($.easing, {
+//飞入购物车
+ $.extend($.easing, {
         easeOutExpo: function(x, t, b, c, d) {
             return (t == d) ? b + c : c * (-Math.pow(2, -1 * t / d) + 1) + b;
         }
     });
 Vue.prototype.$addCart = function(item,index){
-   let iconX = $('.icon_add_cart').eq(index).offset().left;
-        let iconY = $('.icon_add_cart').eq(index).offset().top;
-        let footerCartX = $("#cart").offset().left;;
-        let footerCartY = $("#cart").offset().top;
-        let itemImg = $('.icon_add_cart').eq(index).parents('.item').find('img').prop('src');
-        let pid = $('.icon_add_cart').eq(index).parents('.item').prop('id');
-        let ptitle = $('.icon_add_cart').eq(index).parents('.item').find('.info').text();
-        let country = $('.icon_add_cart').eq(index).parents('.item').find('.i_country span').text();
-        let price = $('.icon_add_cart').eq(index).parents('.item').find('.i_price span').text();
-      
     if($('.icon_add_cart').eq(index).hasClass('no_icon')){
            alert("此商品无库存！")
-           return false
-    }else {
-       let user = localStorage.getItem('token');
-       let Base64 = require('js-base64').Base64;
-        Vue.prototype.$axios.post('/api/user').then(res=>{
+           return false;
+    }
+    let elem = $('.icon_add_cart').eq(index),
+        elemOffset = elem.offset(),
+        iconX = elemOffset.left,
+        iconY = elemOffset.top;
+
+    let elemBox = elem.parents(".item"),
+        itemImg = elemBox.find('img').prop('src'),
+        pid = elemBox.prop('id'),
+        ptitle = elemBox.find('.info').text(),
+        country = elemBox.find('.i_country span').text(),
+        price = elemBox.find('.i_price span').text();
+
+
+    let footerIcon = $("#cart"),
+        footerIconOffset = footerIcon.offset(),
+         footerCartX = footerIconOffset.left,
+         footerCartY = footerIconOffset.top; 
+
+    let user = localStorage.getItem('token'),
+        Base64 = require('js-base64').Base64;      
+
+       Vue.prototype.$axios.post('/api/user',{'user':user}).then(res=>{
                 res.data.data.forEach((item,index)=>{
                     if(item.mobile===Base64.decode(user)){
                        let arr = {
@@ -89,35 +98,35 @@ Vue.prototype.$addCart = function(item,index){
                              "country":country,
                              "count":1
                        };
-                       item.cartList.push(arr);
+                         item.cartList.push(arr);
                          item.cartNum ++ ;
                     }
                 })
               });
-        let html = '<img class="flyImg"/>';
-            $(".flyImg").prop('src',itemImg);
+
+        let html = '<img class="flyImg" src="'+itemImg+'"/>';
+          $('body').append(html);
             $(".flyImg").css({
               "position": "absolute",
               "left":iconX,
               "top":iconY,
-              "zIndex":99999,
+              "zIndex":999,
               "width": 0.533333+"rem",
               "height": 0.533333+"rem",
-            })
-            $('body').append(html);
+            });
             $(".flyImg").animate({
-               'left':footerCartX+30,
-               'top':footerCartY+400,
+               'left':footerCartX,
+               'top':footerCartY+200,
                'width':5,
                'height':5,
-               'opacity':0.4
-            },function(){
-              $(this).remove();
-            },"easeOutExpo")          
-    }
+               'opacity':0.5
+            },'easeOutExpo',function(){
+                 $(this).remove()
+            })   
+
+  
            
     },    
-
 
 
 new Vue({

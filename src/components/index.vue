@@ -7,15 +7,23 @@
           <span class="icon icon_arrow"></span>
           <div class="item_list" >
             <dl>
-              <span class="icon icon_flag icon_CN"><img src="../assets/img/fr.png" alt="fr" /></span>
+              <span class="icon icon_flag icon_CN"><img src="../assets/img/detail.png" alt="fr" /></span>
               中文
             </dl>
             <dl>
-              <span class="icon icon_flag icon_EN"><img src="../assets/img/fr.png" alt="fr"/></span>
+              <span class="icon icon_flag icon_EN"><img src="../assets/img/eperClubimg.png" alt="fr"/></span>
               English
             </dl>
             <dl>
-              <span class="icon icon_flag icon_FR"><img src="../assets/img/fr.png" alt="fr"/></span>
+              <span class="icon icon_flag icon_FR"><img src="../assets/img/points_empty.png" alt="fr"/></span>
+              Francais
+            </dl>
+             <dl>
+              <span class="icon icon_flag icon_FR"><img src="../assets/img/product.png" alt="fr"/></span>
+              Francais
+            </dl>
+            <dl>
+              <span class="icon icon_flag icon_FR"><img src="../assets/img/cartimg.png" alt="fr"/></span>
               Francais
             </dl>
           </div>
@@ -27,11 +35,10 @@
         <li class="item email">
           <a href="javascript:;" class="icon iconfont icon-email icon-xinfeng"></a>
         </li>
-
       </ul>
     </header>
     <article>
-      <section class="banner swiper-container" id="index-banner">
+      <section class="banner swiper-container list_box" id="index-banner">
         <ul class="banner_ul swiper-wrapper ">
           <li v-for="item in banner"class="item swiper-slide">
              <a :href="item.bhref">
@@ -96,7 +103,7 @@
 
       <section class="middleBanner flex midcenter">
         <ul class="middleBanner_ul p30 flex midcenter rowflex">
-          <li class="item"><a href="javascrpt:;"><img src="../assets/img/banner.png" alt="banner" title="banner"/></a></li>
+          <li class="item"><a href="javascrpt:;"><img src="../assets/img/cateimg.png" alt="banner" title="banner"/></a></li>
         </ul>
       </section>
       <section class="mianContent">
@@ -188,12 +195,23 @@ export default {
             this.product = res.data.data;
             this.brands = res.data.Brands;
             this.$nextTick(function(){
-                 new Swiper('#index-banner', {
-                     autoplay: 3000,
-                     pagination : '#index-banner .index-p',
-                     prevButton:'#index-banner .prev',
-                    nextButton:'#index-banner .next',
-                  });
+                new Swiper('.list_box',{
+        effect : 'horizontal',
+        slidesPerView: "auto",
+        centeredSlides:true,
+        pagination :'.index-p',
+        loop:true,
+        observer:true, 
+        observeParents:true,
+        spaceBetween: 30,
+    });
+        
+                 // new Swiper('.list_box', {
+                 //     autoplay: 3000,
+                 //     pagination : '.list_box .index-p',
+                 //     prevButton:'.list_box .prev',
+                 //    nextButton:'.list_box .next',
+                 //  });
 
               });
         };

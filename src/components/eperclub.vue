@@ -1,7 +1,7 @@
 <template>
   <div id="eperclub">
     <header class="header flex midcenter login_header">
-      <h3 class="title flex rowflexbteew p30"><a href="javascript:;" class="icon js_go_history" @click="activated"> < </a> <p>EperClub Store</p><span></span></h3>
+      <h3 class="title flex rowflexbteew p30"><a href="javascript:;" class="icon js_go_history" @click="$setgoindex()"> < </a> <p>EperClub Store</p><span></span></h3>
     </header>
     <article class="eperClub_box" >
       <section class="eperClub_points flex rowflexbteew p30">
@@ -22,125 +22,20 @@
       </section>
       <section class="eperClub_list">
         <ul class="eperClub_list_ul flex rowflex">
-          <li class="item">
-            <a href="javascript:;">
+          <li class="item" v-for="item in integgoods">
+            <router-link :to="{name:'detail',params:{'id':item.id}}">
               <div class="img_box">
-                <img src="../assets/img/eperClubimg.png" alt="img"/>
+                <img :src="item.inteImg" alt="item.id"/>
               </div>
               <p class="i_info flex rowflex">
-                <span>[Product]:</span>Carambar, 'VeryBad Kids' Sour Soda Flavor1234564987888991
+                <span>[Product]:</span>{{item.intetitle}}
               </p>
               <p class="i_points">
-                <span class="point">100000</span>
+                <span class="point">{{item.point}}</span>
                 Points
               </p>
-              <button class="btn exchange">Exchange</button>
-            </a>
-          </li>
-          <li class="item">
-            <a href="javascript:;">
-              <div class="img_box">
-                <img src="../assets/img/eperClubimg.png" alt="img"/>
-              </div>
-              <p class="i_info">
-                [Product]:<span class="info">Carambar, 'VeryBad Kids' Sour Soda Flavor...</span>
-              </p>
-              <p class="i_points">
-                <span class="point">100000</span>
-                Points
-              </p>
-              <button class="btn exchange no_check_btn" disabled="disabled">Out of stock</button>
-            </a>
-          </li>
-          <li class="item">
-            <a href="javascript:;">
-              <div class="img_box">
-                <img src="../assets/img/eperClubimg.png" alt="img"/>
-              </div>
-              <p class="i_info">
-                [Product]:<span class="info">Carambar, 'VeryBad Kids' Sour Soda Flavor...</span>
-              </p>
-              <p class="i_points">
-                <span class="point">100000</span>
-                Points
-              </p>
-              <button class="btn exchange">Exchange</button>
-            </a>
-          </li>
-          <li class="item">
-            <a href="javascript:;">
-              <div class="img_box">
-                <img src="../assets/img/eperClubimg.png" alt="img"/>
-              </div>
-              <p class="i_info">
-                [Product]:<span class="info">Carambar, 'VeryBad Kids' Sour Soda Flavor...</span>
-              </p>
-              <p class="i_points">
-                <span class="point">100000</span>
-                Points
-              </p>
-              <button class="btn exchange">Exchange</button>
-            </a>
-          </li>
-          <li class="item">
-            <a href="javascript:;">
-              <div class="img_box">
-                <img src="../assets/img/eperClubimg.png" alt="img"/>
-              </div>
-              <p class="i_info flex rowflex">
-                <span>[Product]:</span>Carambar, 'VeryBad Kids' Sour Soda Flavor1234564987888991
-              </p>
-              <p class="i_points">
-                <span class="point">100000</span>
-                Points
-              </p>
-              <button class="btn exchange">Exchange</button>
-            </a>
-          </li>
-          <li class="item">
-            <a href="javascript:;">
-              <div class="img_box">
-                <img src="../assets/img/eperClubimg.png" alt="img"/>
-              </div>
-              <p class="i_info">
-                [Product]:<span class="info">Carambar, 'VeryBad Kids' Sour Soda Flavor...</span>
-              </p>
-              <p class="i_points">
-                <span class="point">100000</span>
-                Points
-              </p>
-              <button class="btn exchange no_check_btn" disabled="disabled">Out of stock</button>
-            </a>
-          </li>
-          <li class="item">
-            <a href="javascript:;">
-              <div class="img_box">
-                <img src="../assets/img/eperClubimg.png" alt="img"/>
-              </div>
-              <p class="i_info">
-                [Product]:<span class="info">Carambar, 'VeryBad Kids' Sour Soda Flavor...</span>
-              </p>
-              <p class="i_points">
-                <span class="point">100000</span>
-                Points
-              </p>
-              <button class="btn exchange">Exchange</button>
-            </a>
-          </li>
-          <li class="item">
-            <a href="javascript:;">
-              <div class="img_box">
-                <img src="../assets/img/eperClubimg.png" alt="img"/>
-              </div>
-              <p class="i_info">
-                [Product]:<span class="info">Carambar, 'VeryBad Kids' Sour Soda Flavor...</span>
-              </p>
-              <p class="i_points">
-                <span class="point">100000</span>
-                Points
-              </p>
-              <button class="btn exchange">Exchange</button>
-            </a>
+              <button :class="['btn','exchange',{'no_check_btn':item.self>0?'':'no_check_btn'}]">Exchange</button>
+            </router-link>
           </li>
         </ul>
       </section>
@@ -155,7 +50,8 @@ export default{
   data(){
     return {
       integral: "",
-      laver: ""
+      laver: "",
+      integgoods:[]
     }
   },
   beforeMount(){
@@ -163,26 +59,31 @@ export default{
 
   },
   methods:{
-    activated: function () {
-     this.$setgoindex()
-   },
    startGetData: function(){
-    let user = localStorage.getItem('user');
+    let user = localStorage.getItem('token');
     let Base64 = require('js-base64').Base64;
-    if (user != null) {
-      this.$axios.post('/api/user').then(res => {
-        if (res.status === 200 && res.data != '') {
-          let userList = res.data.data;
-          for (let i = 0; i < userList.length; i++) {
-            if (userList[i].mobile == Base64.decode(user)) {
-              this.integral = userList[i].integral;
-              this.laver = userList[i].grade;
-            }
+    if (user === null||user=== 0) {
+         this.$router.push("/login"); return false;
+      };
+      //获取用户信息
+     this.$axios.post('/api/user').then(res => {
+        if (res.status == 200 && res.data != '') {
+          res.data.data.forEach((item,index)=>{
+            if (item.mobile == Base64.decode(user)) {
+              this.integral = item.integral;
+              this.laver = item.grade;   
+              }  
+          })
           }
-        }
-      })
-    }
-  }         
+        
+    });
+     //获取goodslist
+  this.$axios.get('/api/eperbox').then(res=>{
+     if(res.status === 200){
+       this.integgoods=res.data.data;
+     }
+  })        
+}
 }
 }
 

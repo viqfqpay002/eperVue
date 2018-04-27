@@ -50,7 +50,6 @@ html{
 }
 body{
   width: 100%;
-  overflow-x: hidden;
   background: #ffff;
   position: relative;
 }
@@ -422,7 +421,4 @@ body{
 .component-fade-enter, .component-fade-leave-to {
   opacity: 0;
 }
-.flyImg{
-  position: absolute;
-  z-index: 9999;
-}
+

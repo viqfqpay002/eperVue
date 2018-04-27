@@ -23,9 +23,7 @@
          <li class="item search">
            <h3 class="title">Me</h3>
            <!--  <input type="text" class="search_input" placeholder="Search..."> -->
-           <router-link :to="{name:'settings'}" class="icon iconfont icon-search icon-shezhi" id="js_set">
-             
-           </router-link>
+           <span  class="icon iconfont icon-search icon-shezhi" id="js_set" @click="goSettings()"></span>
          </li>
          <li class="item email">
            <a href="javascript:;" class="icon iconfont icon-email icon-xinfeng"></a>
@@ -37,7 +35,7 @@
        <section class="usercenter_banner p40">
          <div class="usercenter_msg  ">
 
-           <div class="userCenterNoLogin" v-show="isShow==true" >
+           <div class="userCenterNoLogin" v-if="isShow==true" >
              <p class="info">Better Quality, Better Life</p>
              <p class="linkLogin">
                <router-link to="/login">Login</router-link>
@@ -45,7 +43,7 @@
              </p>
            </div>
 
-           <div class="userCenterLogin" v-show="isShow==false" >
+           <div class="userCenterLogin" v-if="isShow==false" >
              <p class="info">Welcome <span class="usercenter_name">{{username}}</span><span class="icon"></span></p>
              <p class="userlevel">{{grade}}</p>
              <ul class="user_msg_list flex rowflexbteew"  >
@@ -122,7 +120,7 @@ import {userLogin} from '../../axios/api';
        name:"userCenter",
        data(){
            return{
-               isShow:false,
+               isShow:true,
                integral:0,
                account:0,
                coupons:0,
@@ -131,9 +129,10 @@ import {userLogin} from '../../axios/api';
            }
        },
      beforeMount(){
-       this.startGetData()
+       
      },
      mounted(){
+      this.startGetData()
      },
      methods:{
       startGetData: function(){
@@ -142,22 +141,22 @@ import {userLogin} from '../../axios/api';
        let usp = localStorage.getItem('usp');
        let status = localStorage.getItem('status');
        if(/*status!=="1"*/uid===""){
-         this.isShow=!this.isShow;
+         this.isShow= true;
        }else {
-         // userLogin(Base64.decode(uid),usp).then(res=>{
-         //  console.log(res.data.data);
-         //   if(res.data.data.ComMobile===Base64.decode(uid)){
-         //       this.integral= res.data.data.CusJiFen;
-         //          this.account =res.data.data.CusFundAmount;
-         //         this.coupons = res.data.data.CanCashVoucherNum;
-         //         this.grade = res.data.data.CusLevelID;
-         //          if(res.data.data.UserName===""){
-         //             this.username = res.data.data.ComMobile
-         //         }else {
-         //              this.username = res.data.data.UseName
-         //         }
-         //   }
-         // })
+      /*   userLogin(Base64.decode(uid),usp).then(res=>{
+          console.log(res.data.data);
+           if(res.data.data.ComMobile===Base64.decode(uid)){
+               this.integral= res.data.data.CusJiFen;
+                  this.account =res.data.data.CusFundAmount;
+                 this.coupons = res.data.data.CanCashVoucherNum;
+                 this.grade = res.data.data.CusLevelID;
+                  if(res.data.data.UserName===""){
+                     this.username = res.data.data.ComMobile
+                 }else {
+                      this.username = res.data.data.UseName
+                 }
+           }
+         })*/
          this.$axios.post('/api/user').then(res=>{
            let data = res.data.data;
            if(data.length>0){
@@ -178,6 +177,13 @@ import {userLogin} from '../../axios/api';
            }
          })
        }
+      },
+      goSettings: ()=>{
+         let uid = localStorage.getItem('token');
+         if(uid===null||uid===0){
+           
+         }
+
       }
      }
    }

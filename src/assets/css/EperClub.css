@@ -49,13 +49,13 @@
 }
 .eperClub_list_ul{
 	flex-flow: row wrap;
-   -webkit-flex-flow: row wrap;
-  
+   -webkit-flex-flow: row wrap
 }
 .eperClub_list_ul .item{
    width:50%;
    text-align: center;
    font-size: 0.32rem;
+  transition: all 0.3s ease-out
    
 }
 .eperClub_list_ul .item a{

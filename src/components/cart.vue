@@ -1,8 +1,8 @@
 <template>
-  <div id="cart">
+  <div id="cartWrap">
     <header class="header  login_header flex midcenter">
       <h3 class="title  flex rowflexbteew midcenter p30">
-        <a href="javascript:;" class="icon js_go_history flag" @click="activated"> < </a>
+        <a href="javascript:;" class="icon js_go_history flag" @click="$setgoindex()"> < </a>
         <p class=" search">cart </p>
         <span class="icon iconfont icon-search icon-sousuo"></span>
         <span class="icon iconfont icon-email icon-xinfeng"></span></h3>
@@ -58,7 +58,7 @@
                 <p class="i_price">￥{{item.price|keepTwoNum}}</p>
               </div>
             </router-link>
-            <span :class="['icon','icon_add_cart','iconfont','icon-gouwuchetianjia',{'no_icon':item.inventory>1?'':'no_icon'}]"></span>
+            <span :class="['icon','icon_add_cart','iconfont','icon-gouwuchetianjia',{'no_icon':item.inventory>1?'':'no_icon'}]" @click="$addCart(item,index)"></span>
           </li>
         </ul>
       </section>
@@ -79,7 +79,7 @@
 
 <script>
 export default {
- name:"cart",
+ name:"cartWrap",
  data(){
    return{
      loginShow:false,
@@ -103,9 +103,6 @@ export default {
    })
  },
  methods:{
-  activated: function () {
-     this.$setgoindex()
-  },
   startGetData: function(){
    let user = localStorage.getItem('token');
    if(user == null){

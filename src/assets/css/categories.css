@@ -22,6 +22,7 @@
 .select_ul{
 	flex-flow: row wrap;
 	padding: 0.133333rem;
+	background: #f1f1f1
 }
 .select_ul .item{
 	display: block;

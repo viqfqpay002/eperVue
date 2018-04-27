@@ -16,7 +16,7 @@
            <input type="text" class="phonCode" v-validate="'required|ver'" placeholder="Vertification code" :class="{'input':true,'is-danger':errors.has('ver')}" name="ver" v-model="ver"/>
            <button type="button" class="ver_btn" v-bind:disabled="sendflag"  @click="sendClik">{{time}}</button>
            <span v-if="errorflag" class="errinfo"  v-show="errors.has('ver')" v-cloak>{{ errors.first('ver') }}</span>
-           <span v-else class="errinfo">{{vererror}}<router-link to="login">请前去登录</router-link></span>
+           <span v-else class="errinfo">{{vererror}}<!-- <router-link to="login">请前去登录</router-link> --></span>
          </div>
 
          <!-- password -->
